@@ -1,7 +1,8 @@
 class VideosController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :update, :edit, :create, :destroy]
   before_action :set_video, only: [:show, :edit, :update, :destroy]
+  before_action :user_matches, only: [:edit, :update, :destroy]
   require 'streamio-ffmpeg'
-  # before_action :authenticate_user!
 
   # GET /videos
   # GET /videos.json
@@ -27,13 +28,15 @@ class VideosController < ApplicationController
   # POST /videos.json
   def create
     @video = Video.new(video_params)
-    
+    @video.user = current_user
+
     respond_to do |format|
       if @video.save
         if @video.clip.attached? && !@video.thumbnail.attached?
           @video.clip.open do |file|
             movie = FFMPEG::Movie.new(file.path)
-            thumb = movie.screenshot("./storage/thumbnails/#{@video.clip.key}_thumb.png", {quality: 3, seek_time: 5, resolution: '240x120'}, preserve_aspect_ratio: :width)
+            thumb_time = (movie.duration / 2).round
+            thumb = movie.screenshot("./storage/thumbnails/#{@video.clip.key}_thumb.png", {quality: 3, seek_time: thumb_time, resolution: '450x600'}, preserve_aspect_ratio: :width)
             @video.thumbnail.attach(io: File.open(thumb.path), filename: "#{@video.clip.key}_thumb.png", content_type: "image/png")
           end
         end
@@ -79,5 +82,9 @@ class VideosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
       params.require(:video).permit(:title, :description, :clip, :thumbnail)
+    end
+
+    def user_matches
+      redirect_to videos_url, notice: "You don't have the permission to view this page." if @video.user != current_user
     end
 end
