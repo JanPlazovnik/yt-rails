@@ -1,5 +1,7 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
+  require 'streamio-ffmpeg'
+  # before_action :authenticate_user!
 
   # GET /videos
   # GET /videos.json
@@ -10,6 +12,13 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
+    @video.clip.open do |file|
+      puts "oi"
+      # puts file.path
+      movie = FFMPEG::Movie.new(file.path)
+      puts movie.duration
+      puts movie.size
+    end
   end
 
   # GET /videos/new
