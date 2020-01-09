@@ -12,13 +12,6 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
-    @video.clip.open do |file|
-      puts "oi"
-      # puts file.path
-      movie = FFMPEG::Movie.new(file.path)
-      puts movie.duration
-      puts movie.size
-    end
   end
 
   # GET /videos/new
@@ -34,9 +27,16 @@ class VideosController < ApplicationController
   # POST /videos.json
   def create
     @video = Video.new(video_params)
-
+    
     respond_to do |format|
       if @video.save
+        if @video.clip.attached? && !@video.thumbnail.attached?
+          @video.clip.open do |file|
+            movie = FFMPEG::Movie.new(file.path)
+            thumb = movie.screenshot("./storage/thumbnails/#{@video.clip.key}_thumb.png", {quality: 3, seek_time: 5, resolution: '240x120'}, preserve_aspect_ratio: :width)
+            @video.thumbnail.attach(io: File.open(thumb.path), filename: "#{@video.clip.key}_thumb.png", content_type: "image/png")
+          end
+        end
         format.html { redirect_to @video, notice: 'Video was successfully created.' }
         format.json { render :show, status: :created, location: @video }
       else
