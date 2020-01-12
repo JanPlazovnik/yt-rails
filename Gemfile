@@ -32,6 +32,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'streamio-ffmpeg'
 gem 'activestorage-validator'
+gem 'commontator'
+gem 'acts_as_votable'
+gem 'socialization' # https://github.com/cmer/socialization#acts_as_follower-methods
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
