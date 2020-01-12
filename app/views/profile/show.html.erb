@@ -1,0 +1,32 @@
+<%= @user.id %>
+<br/>
+<%= @user.email %>
+<br/>
+<%= @user.created_at %>
+<br/>
+<%= @user.updated_at %>
+<br/>
+Subscribed to:
+<%= @user.followees_count %>
+<br/>
+Suscribers:
+<%= @user.followers_count %>
+
+
+<% if user_signed_in? && current_user != @user %>
+    <% if !current_user.follows?(@user)%>
+        <%= link_to follow_profile_path(@user.id), method: :put do %>
+            Subscribe
+        <% end %>
+    <% else %>
+        <%= link_to unfollow_profile_path(@user.id), method: :put do %>
+            Unsubscribe
+        <% end %>  
+    <% end %>
+<% end %>
+
+<h1 style="font-size: 2em; font-weight: bold">Videos</h1>
+
+<% @user.videos.map do |video| %>
+    <%= link_to video.title, video_path(video) %><br/>
+<% end %>
