@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
   before_action :authenticate_user!, only: [:new, :update, :edit, :create, :destroy]
-  before_action :set_video, only: [:show, :edit, :update, :destroy]
+  before_action :set_video, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :user_matches, only: [:edit, :update, :destroy]
   require 'streamio-ffmpeg'
 
@@ -13,6 +13,7 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
+    commontator_thread_show(@video)
   end
 
   # GET /videos/new
@@ -71,6 +72,16 @@ class VideosController < ApplicationController
       format.html { redirect_to videos_url, notice: 'Video was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def upvote 
+    @video.upvote_by current_user
+    redirect_back(fallback_location: root_path)
+  end  
+  
+  def downvote
+    @video.downvote_by current_user
+    redirect_back(fallback_location: root_path)
   end
 
   private
