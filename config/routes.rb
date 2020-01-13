@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   resources :profile do
     member do
+      get "uploads", to: "profile#uploads"
       put "follow", to: "profile#follow"
       put "unfollow", to: "profile#unfollow"
     end
