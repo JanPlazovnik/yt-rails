@@ -14,7 +14,7 @@
 !/tmp/.keep
 
 # Ignore uploaded files in development.
-/storage/*
+/storage/**/*
 !/storage/thumbnails
 !/storage/thumbnails/.gitkeep
 
