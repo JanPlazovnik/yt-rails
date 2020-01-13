@@ -1,3 +1,5 @@
+<%= link_to @video.user.email, profile_path(@video.user) %>
+
 <p>
   <strong>Title:</strong>
   <%= @video.title %>
@@ -15,17 +17,19 @@
   <%= video_tag(url_for(@video.clip), style:'width:100%;height:auto') %>
 </div>
 
-<%= link_to like_video_path(@video), method: :put do %>
-  Like
-  <%= @video.get_upvotes.size %>
-<% end %>
+<div style="margin-top: 100px">
+  <%= link_to like_video_path(@video), method: :put do %>
+    Like
+    <%= @video.get_upvotes.size %>
+  <% end %>
 
-<%= link_to dislike_video_path(@video), method: :put do %>
-  Dislike
-  <%= @video.get_downvotes.size %>
-<% end %>
+  <%= link_to dislike_video_path(@video), method: :put do %>
+    Dislike
+    <%= @video.get_downvotes.size %>
+  <% end %>
 
-<%= commontator_thread(@video) %>
+  <%= commontator_thread(@video) %>
 
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+  <%= link_to 'Edit', edit_video_path(@video) %> |
+  <%= link_to 'Back', videos_path %>
+</div>
