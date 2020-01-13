@@ -12,6 +12,7 @@ Subscribed to:
 Suscribers:
 <%= @user.followers_count %>
 
+<%= link_to 'Uploads', uploads_profile_path(@user.id) %>
 
 <% if user_signed_in? && current_user != @user %>
     <% if !current_user.follows?(@user)%>
