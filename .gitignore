@@ -15,9 +15,8 @@
 
 # Ignore uploaded files in development.
 /storage/*
-!/storage/.keep
-
-!/storage/.gitkeep
+!/storage/thumbnails
+!/storage/thumbnails/.gitkeep
 
 /public/assets
 .byebug_history
