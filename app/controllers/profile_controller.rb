@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
     before_action :authenticate_user!, only: [:edit, :create, :update, :destroy, :follow, :unfollow]
-    before_action :set_user, only: [:show, :follow, :unfollow]
+    before_action :set_user, only: [:show, :uploads, :follow, :unfollow]
     before_action :prevent_self_follow, only: [:follow, :unfollow]
 
     def show
