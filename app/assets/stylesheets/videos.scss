@@ -1,3 +1,50 @@
 // Place all the styles related to the videos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.container {
+    display: flex;
+}
+.video-column {
+    display: flex;
+    // flex-direction: column;
+    padding: 10px;
+    width: 75%;
+}
+.video-view {
+    border-radius: 5px;
+}
+
+.suggestions-column {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 25%
+}
+.suggestion-clickable {
+    text-decoration: none;
+    margin-bottom: 7px;
+}
+.suggestion-card {
+    display: flex;
+    flex-direction: row;
+}
+.suggestion-image {
+    border-radius: 5px;
+    max-width: 168px;
+    max-height: 94px;
+    width: 100%;
+    height: 100%;
+}
+.suggestion-meta {
+    padding: 2px 0 0 7px;
+    display: flex;
+    flex-direction: column;
+}
+.suggestion-meta span.title {
+    font-size: 1.1em;
+    color: #3f3f3f;
+}
+.suggestion-meta span.author {
+    font-size: 1em;
+    color: #504f4f;
+}
