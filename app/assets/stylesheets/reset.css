@@ -24,7 +24,8 @@ time, mark, audio, video {
 	font-size: 100%;
     font: inherit;
     font-family: 'Roboto', sans-serif;
-    vertical-align: baseline;
+	vertical-align: baseline;
+	box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -54,4 +55,5 @@ table {
 	max-width: 1600px;
 	width: 100%;
 	margin: 0 auto;
+	padding-top: 10px;
 }
