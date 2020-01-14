@@ -22,7 +22,7 @@
         <%= link_to new_video_path do %>
           <i class='uil uil-upload'></i>
         <% end %>
-        <%= link_to new_video_path do %>
+        <%= link_to uploads_profile_path(current_user.id) do %>
           <i class='uil uil-video'></i>
         <% end %>
         <div class="dropdown">
@@ -54,6 +54,8 @@
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
