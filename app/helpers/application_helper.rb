@@ -11,5 +11,10 @@ module ApplicationHelper
             video.thumbnail.variant(resize: "200x100!")
         end
     end
+    def frontpage_thumbnail(video)
+        if video.thumbnail.attached?
+            video.thumbnail.variant(resize: "300x150!")
+        end
+    end
 end
 

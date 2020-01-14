@@ -1,24 +1,11 @@
-<h1>Videos</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @videos.each do |video| %>
-      <tr>
-        <td><%= video.title %></td>
-        <td><%= video.description %></td>
-        <td><%= link_to 'Show', video %></td>
-        <td><%= link_to 'Edit', edit_video_path(video) %></td>
-        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="inner-container">
+  <h1 class="frontpage-recommendation-title">Recommended for you</h1>
+  <div class="frontpage-recommendations">
+    <% @top_picks.each do |recommendation| %>
+      <%= link_to recommendation, class: "frontpage-recommendation-item" do %>
+        <%= image_tag frontpage_thumbnail(recommendation) %>
+      <% end %>
     <% end %>
-  </tbody>
-</table>
-
+  </div>
+</div>

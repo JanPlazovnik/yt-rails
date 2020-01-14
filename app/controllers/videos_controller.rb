@@ -40,7 +40,7 @@ class VideosController < ApplicationController
           @video.clip.open do |file|
             movie = FFMPEG::Movie.new(file.path)
             thumb_time = (movie.duration / 2).round
-            thumb = movie.screenshot("./storage/thumbnails/#{@video.clip.key}_thumb.png", {quality: 3, seek_time: thumb_time, resolution: '450x600'}, preserve_aspect_ratio: :width)
+            thumb = movie.screenshot("./storage/thumbnails/#{@video.clip.key}_thumb.png", {quality: 3, seek_time: thumb_time, resolution: '600x450'}, preserve_aspect_ratio: :width)
             @video.thumbnail.attach(io: File.open(thumb.path), filename: "#{@video.clip.key}_thumb.png", content_type: "image/png")
           end
         end
