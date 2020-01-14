@@ -8,13 +8,15 @@ class VideosController < ApplicationController
   # GET /videos.json
   def index
     @videos = Video.all
+    @channel_top = User.includes(:videos).references(:videos).where('videos.id IS NOT NUll').order("RANDOM()").limit(1).first()
+    @top_picks = Video.includes(:user).order("RANDOM()").limit(10)
   end
 
   # GET /videos/1
   # GET /videos/1.json
   def show
     commontator_thread_show(@video)
-    @suggestions = Video.where.not(id: params[:id]).order("RANDOM()").limit(10)
+    @suggestions = Video.includes(:user).where.not(id: params[:id]).order("RANDOM()").limit(10)
   end
 
   # GET /videos/new
