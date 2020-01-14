@@ -1,35 +1,16 @@
-<%= link_to @video.user.username, profile_path(@video.user) %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @video.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @video.description %>
-</p>
-
-<div style="width: 400px; height: 400px">
-  <% if @video.thumbnail.attached? %>
-    <%= image_tag(@video.thumbnail, style:'width:100%;height:auto') %>
-  <% end %>
-  <%= video_tag(url_for(@video.clip), style:'width:100%;height:auto') %>
+<div class="video-column">
+  <%= video_tag url_for(@video.clip), poster: url_for(@video.thumbnail), :controls => true, class: "video-view" %>
 </div>
-
-<div style="margin-top: 100px">
-  <%= link_to like_video_path(@video), method: :put do %>
-    Like
-    <%= @video.get_upvotes.size %>
+<div class="suggestions-column">
+  <% @suggestions.each do |suggestion| %>
+    <%= link_to suggestion, class: "suggestion-clickable" do %>
+        <div class="suggestion-card">
+            <%= image_tag suggestion.thumbnail, class: "suggestion-image" %>
+            <div class="suggestion-meta">
+                <span class="title"><%= suggestion.title %></span>
+                <span class="author"><%= suggestion.user.username %></span>
+            </div>
+        </div>
+    <% end %>
   <% end %>
-
-  <%= link_to dislike_video_path(@video), method: :put do %>
-    Dislike
-    <%= @video.get_downvotes.size %>
-  <% end %>
-
-  <%= commontator_thread(@video) %>
-
-  <%= link_to 'Edit', edit_video_path(@video) %> |
-  <%= link_to 'Back', videos_path %>
 </div>
