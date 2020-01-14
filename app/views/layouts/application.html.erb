@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>RailsYt</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.0.8/css/unicons.css"> <!-- https://iconscout.com/unicons -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +11,47 @@
   </head>
 
   <body>
+    <div class="nav">
+      <div class="nav-main">
+        <%= link_to root_path do %>
+          <h1 style="font-size: 1.1em; font-weight: bold"><span style="color:#c10000">rails</span>tube</h1>
+        <% end %>
+      </div>
+      <div class="nav-right">
+      <% if user_signed_in? %>
+        <%= link_to new_video_path do %>
+          <i class='uil uil-upload'></i>
+        <% end %>
+        <%= link_to new_video_path do %>
+          <i class='uil uil-video'></i>
+        <% end %>
+        <div class="dropdown">
+          <button class="dropbtn"><%= image_tag user_avatar(current_user), class: "rounded-circle" %></button>
+            <div class="dropdown-content">
+              <%= link_to profile_path(current_user) do %>
+                <i class='uil uil-user-circle'></i> Your channel
+              <% end %>
+              <%= link_to edit_user_registration_path do %>
+                <i class='uil uil-cog'></i> Settings
+              <% end %>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class='uil uil-sign-out-alt'></i> Sign out
+              <% end %>
+            </div>
+            <script type="text/javascript">
+            $(".dropbtn").click(function(){
+                $(".dropdown-content").toggle();
+            });
+            </script>
+        </div>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+          <i class='uil uil-sign-in-alt'></i>
+        <% end %>
+      <% end %>
+      </div>
+    </div>    
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

@@ -14,6 +14,7 @@ class VideosController < ApplicationController
   # GET /videos/1.json
   def show
     commontator_thread_show(@video)
+    @suggestions = Video.order("RANDOM()").limit(10)
   end
 
   # GET /videos/new
@@ -92,7 +93,7 @@ class VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-      params.require(:video).permit(:title, :description, :clip, :thumbnail)
+      params.require(:video).permit(:title, :description, :clip, :thumbnail, :search)
     end
 
     def user_matches

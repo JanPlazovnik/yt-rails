@@ -1,0 +1,5 @@
+<%= @user.username %>
+
+<% @user.videos.map do |video| %>
+    <%= link_to video.title, video_path(video) %><br/>
+<% end %>
