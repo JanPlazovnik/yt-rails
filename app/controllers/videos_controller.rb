@@ -14,7 +14,7 @@ class VideosController < ApplicationController
   # GET /videos/1.json
   def show
     commontator_thread_show(@video)
-    @suggestions = Video.order("RANDOM()").limit(10)
+    @suggestions = Video.where.not(id: params[:id]).order("RANDOM()").limit(10)
   end
 
   # GET /videos/new
