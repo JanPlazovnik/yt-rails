@@ -77,12 +77,12 @@ class VideosController < ApplicationController
 
   def upvote 
     @video.upvote_by current_user
-    redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
   end  
   
   def downvote
     @video.downvote_by current_user
-    redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
   end
 
   private
