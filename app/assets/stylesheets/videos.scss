@@ -6,12 +6,67 @@
 }
 .video-column {
     display: flex;
-    // flex-direction: column;
+    flex-direction: column;
     padding: 10px;
     width: 75%;
 }
 .video-view {
     border-radius: 5px;
+    max-width: 100%;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+}
+
+.video-info {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.video-info h1 {
+    word-break: break-word;
+}
+
+.video-info h1.title {
+    font-size: 1.3em;
+    color: #212121;
+}
+.video-info span.video-views {
+    font-size: 1em;
+    color: #525151;
+}
+
+.video-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.video-meta {
+    display: flex;
+    flex-direction: row;
+}
+
+.video-meta-items {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.video-meta-items .video-meta-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 12px;
+    background-color: #f3f3f3;
+    color: #525151;
+    margin: 0 5px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color .15s ease-in-out;
+}
+
+.video-meta-items .video-meta-item:hover {
+    background-color: #e4e2e2;
 }
 
 .suggestions-column {
@@ -47,4 +102,17 @@
 .suggestion-meta span.author {
     font-size: 1em;
     color: #504f4f;
+}
+
+@media only screen and (max-width: 800px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px;
+    }
+    .video-column,
+    .suggestions-column {
+        width: 100%;
+        padding: 10px;
+    }
 }
