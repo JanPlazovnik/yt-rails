@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
-    width: 75%;
+    width: 70%;
 }
 .video-view {
     border-radius: 5px;
@@ -73,7 +73,7 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
-    width: 25%
+    width: 30%
 }
 .suggestion-clickable {
     text-decoration: none;
@@ -87,9 +87,28 @@
     border-radius: 5px;
     max-width: 168px;
     max-height: 94px;
-    width: 100%;
-    height: 100%;
+    width: 168px;
+    height: 94px;
+    object-fit: cover;
+    background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+    opacity: .90;
+    transition: opacity .15s ease-in-out;
+    animation: shine-lines .8s infinite ease-out;
 }
+
+@keyframes shine-lines {
+    0% {
+        background-position: 0px;
+    }
+    100% {
+        background-position: 168px;
+    }
+}
+
+.suggestion-clickable:hover .suggestion-image {
+    opacity: 1;
+}
+
 .suggestion-meta {
     padding: 2px 0 0 7px;
     display: flex;
@@ -98,13 +117,30 @@
 .suggestion-meta span.title {
     font-size: 1.1em;
     color: #3f3f3f;
+    word-wrap: break-word;
+    white-space: normal;
+    max-width: 100px;
+    width: 100%;
 }
 .suggestion-meta span.author {
     font-size: 1em;
     color: #504f4f;
+    max-width: 100px;
+    width: 100%;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
-@media only screen and (max-width: 800px) {
+// @media only screen and (max-width: 1000px) {
+//     .video-column {
+//         width: 65%
+//     }
+//     .suggestions-column {
+//         width: 35%
+//     }
+// }
+
+@media only screen and (max-width: 1000px) {
     .container {
         flex-direction: column;
         justify-content: center;
