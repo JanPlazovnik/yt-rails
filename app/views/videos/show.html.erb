@@ -19,7 +19,9 @@
   <% @suggestions.each do |suggestion| %>
     <%= link_to suggestion, class: "suggestion-clickable" do %>
         <div class="suggestion-card">
-            <%= image_tag suggestion.thumbnail, class: "suggestion-image" %>
+            <div class="suggestion-thumbnail">
+              <%= image_tag video_thumbnail(suggestion), class: "suggestion-image" %>
+            </div>
             <div class="suggestion-meta">
                 <span class="title"><%= suggestion.title %></span>
                 <span class="author"><%= suggestion.user.username %></span>
