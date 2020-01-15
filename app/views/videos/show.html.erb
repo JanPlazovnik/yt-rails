@@ -1,15 +1,15 @@
 <div class="video-column">
   <%= video_tag url_for(@video.clip), poster: url_for(@video.thumbnail), :controls => true, class: "video-view" %>
   <div class="video-info">
-    <h1 class="title"><%= truncate(@video.title, :length => 30, :separator => ' ') %></h1>
+    <h1 class="title"><%= truncate(@video.title, :length => 60, :separator => ' ') %></h1>
     <div class="video-meta">
       <span class="video-views">x views &middot; <%= @video.created_at.strftime("%b %d, %Y") %></span>
       <div class="video-meta-items">
-        <%= link_to like_video_path(@video), method: :put, class: "video-meta-item", :onclick => "(document.getElementById('like-js').innerHTML = parseInt(document.getElementById('like-js').innerHTML) + 1)" do %>
-          <i class='uil uil-thumbs-up'></i> <span id="like-js"><%= @video.get_upvotes.size %></span>
+        <%= link_to like_video_path(@video), method: :put, id: "like-js", class: ["video-meta-item"] do %>
+          <i class='uil uil-thumbs-up'></i> <span id="like"><%= @video.get_upvotes.size %></span>
         <% end %>
-        <%= link_to dislike_video_path(@video), method: :put, class: "video-meta-item" do %>
-          <i class='uil uil-thumbs-down'></i> <%= @video.get_downvotes.size %>
+        <%= link_to dislike_video_path(@video), method: :put, id: "dislike-js", class: ["video-meta-item"] do %>
+          <i class='uil uil-thumbs-down'></i> <span id="dislike"><%= @video.get_downvotes.size %></span>
         <% end %>
       </div>
     </div>
@@ -50,10 +50,15 @@
           <%= image_tag video_thumbnail(suggestion), class: "suggestion-image" %>
         </div>
         <div class="suggestion-meta">
-          <span class="title"><%= truncate(suggestion.title, :length => 17, :separator => ' ') %></span>
+          <span class="title"><%= truncate(suggestion.title, :length => 25, :separator => ' ') %></span>
           <span class="author"><%= suggestion.user.username %></span>
         </div>
       </div>
     <% end %>
   <% end %>
 </div>
+
+<script>
+  // add conditional classnames to code above
+  // add like/dislike result displaying
+</script>

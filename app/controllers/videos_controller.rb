@@ -78,13 +78,13 @@ class VideosController < ApplicationController
   end
 
   def upvote 
-    @video.upvote_by current_user
-    # redirect_back(fallback_location: root_path)
+    return @video.unliked_by current_user if (current_user.voted_as_when_voted_for @video) == true 
+    @video.liked_by current_user
   end  
   
   def downvote
-    @video.downvote_by current_user
-    # redirect_back(fallback_location: root_path)
+    return @video.undisliked_by current_user if (current_user.voted_as_when_voted_for @video) == false 
+    @video.disliked_by current_user
   end
 
   private
