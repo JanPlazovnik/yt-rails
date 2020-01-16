@@ -16,5 +16,25 @@ module ApplicationHelper
             video.thumbnail.variant(resize: "300x150!")
         end
     end
+    def user_subscribers(user) 
+        if user.followers_count == 1
+            user.followers_count.to_s + " subscriber"
+        else
+            user.followers_count.to_s + " subscribers"
+        end
+    end
+    def has_liked(user, video)
+        classes = ["video-meta-item"]
+        if (user.voted_as_when_voted_for video) && (current_user.voted_as_when_voted_for video) == true
+            classes << "voted"
+        end
+        return classes
+    end
+    def has_disliked(user, video)
+        classes = ["video-meta-item"]
+        if (user.voted_as_when_voted_for video) == false
+            classes << "voted"
+        end
+        return classes
+    end
 end
-
