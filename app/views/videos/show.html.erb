@@ -5,11 +5,15 @@
     <div class="video-meta">
       <span class="video-views">x views &middot; <%= @video.created_at.strftime("%b %d, %Y") %></span>
       <div class="video-meta-items">
-        <%= link_to like_video_path(@video), method: :put, id: "like-js", class: ["video-meta-item"] do %>
-          <i class='uil uil-thumbs-up'></i> <span id="like"><%= @video.get_upvotes.size %></span>
-        <% end %>
-        <%= link_to dislike_video_path(@video), method: :put, id: "dislike-js", class: ["video-meta-item"] do %>
-          <i class='uil uil-thumbs-down'></i> <span id="dislike"><%= @video.get_downvotes.size %></span>
+        <% if user_signed_in? %>
+          <%= link_to like_video_path(@video), method: :put, id: "like-js", class: has_liked(current_user, @video) do %>
+            <i class='uil uil-thumbs-up'></i> <span id="like"><%= @video.get_upvotes.size %></span>
+          <% end %>
+          <%= link_to dislike_video_path(@video), method: :put, id: "dislike-js", class: has_disliked(current_user, @video) do %>
+            <i class='uil uil-thumbs-down'></i> <span id="dislike"><%= @video.get_downvotes.size %></span>
+          <% end %>
+        <% else %>
+          <div style="padding: 10px 0"></div>
         <% end %>
       </div>
     </div>
@@ -23,7 +27,7 @@
             <%= @video.user.username %>
           <% end %>
           <span class="subscriber-count">
-            <%= @video.user.followers_count %> subscribers
+            <%= user_subscribers(@video.user) %>
           </span>
         </div>
         <% if user_signed_in? && current_user != @video.user %>
@@ -41,7 +45,11 @@
       <p class="video-description-content"><%= @video.description %></p>
     </div>
   </div>
+  <div class="video-comments">
+    <%= commontator_thread(@video) %>
+  </div>
 </div>
+
 <div class="suggestions-column">
   <% @suggestions.each do |suggestion| %>
     <%= link_to suggestion, class: "suggestion-clickable" do %>
@@ -61,4 +69,16 @@
 <script>
   // add conditional classnames to code above
   // add like/dislike result displaying
+  $("#like-js").click(() => {
+    let elem = $("#like-js");
+    if(elem.hasClass("voted")) {
+      elem.toggleClass("voted");
+    }
+  });
+    $("#dislike-js").click(() => {
+    let elem = $("#dislike-js");
+    if(elem.hasClass("voted")) {
+      elem.toggleClass("voted");
+    }
+  });
 </script>
