@@ -33,7 +33,6 @@ Commontator.configure do |config|
   # Returns: the user's name (String)
   # Default: ->(user) { I18n.t('commontator.anonymous') } (all users are anonymous)
   config.user_name_proc = ->(user) { I18n.t('commontator.anonymous') }
-
   # user_link_proc
   # Type: Proc
   # Arguments: a user (acts_as_commontator),
@@ -62,7 +61,7 @@ Commontator.configure do |config|
   #   # view.commontator_gravatar_image_tag(user, 1, s: 60, d: 'mm')
   # end
   config.user_avatar_proc = ->(user, view) do
-    # view.commontator_gravatar_image_tag(user, 1, s: 60, d: 'mm')
+    view.commontator_gravatar_image_tag(user.avatar, 1, s: 60, d: 'mm')
   end
 
   # user_email_proc
@@ -203,7 +202,7 @@ Commontator.configure do |config|
   # If :l is selected, the "reply to thread" form will appear before the comments
   # Otherwise, it will appear after the comments
   # Default: :e
-  config.comment_order = :e
+  config.comment_order = :l
 
   # new_comment_style
   # Type: Symbol
@@ -212,7 +211,7 @@ Commontator.configure do |config|
   #   :t (always present in the thread's page)
   #   :l (link to the form, which appears in the same location the new comment will appear)
   # Default: :l
-  config.new_comment_style = :l
+  config.new_comment_style = :t
 
   # comment_reply_style
   # Type: Symbol
@@ -224,7 +223,7 @@ Commontator.configure do |config|
   #   :b (both <blockquote> the original comment and indent replies)
   # It might be a good idea to add some CSS to hide <blockquote>s when converting from :q to :i
   # Default: :n
-  config.comment_reply_style = :n
+  config.comment_reply_style = :i
 
   # comments_per_page
   # Type: Array
