@@ -3,8 +3,7 @@
     background-color: #101010;
     padding: 10px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
-    max-height:54px;
-
+    height:54px;
 }
 
 .nav .nav-main,
