@@ -1,5 +1,6 @@
 module ApplicationHelper
     def user_avatar(user, size=30)
+        puts "YOOO GETTING YOUR AVATAR"
         if user.avatar.attached?
             user.avatar.variant(resize: "#{size}x#{size}!")
         else
