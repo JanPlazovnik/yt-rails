@@ -1,5 +1,4 @@
 class Video < ApplicationRecord
-    acts_as_commontable dependent: :destroy
     acts_as_votable
 
     has_one_attached :clip
@@ -10,4 +9,5 @@ class Video < ApplicationRecord
     validates :thumbnail, blob: { content_type: :image }
 
     belongs_to :user
+    has_many :comments, dependent: :destroy
 end
