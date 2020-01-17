@@ -46,7 +46,6 @@
     </div>
   </div>
   <div class="video-comments">
-    <%= commontator_thread(@video) %>
   </div>
 </div>
 
@@ -69,16 +68,46 @@
 <script>
   // add conditional classnames to code above
   // add like/dislike result displaying
-  $("#like-js").click(() => {
-    let elem = $("#like-js");
-    if(elem.hasClass("voted")) {
-      elem.toggleClass("voted");
+const like = $('#like-js');
+const likecounter = $('#like');
+const dislike = $('#dislike-js');
+const dislikecounter = $('#dislike');
+const subscribe = $('.subscribe-btn');
+
+like.click(() => {
+    if (like.hasClass('voted')) {
+        like.toggleClass('voted');
+        likecounter.text(+likecounter.text() - 1);
+    } else {
+        if (dislike.hasClass('voted')) {
+            dislike.toggleClass('voted');
+            dislikecounter.text(+dislikecounter.text() - 1);
+        }
+        like.toggleClass('voted');
+        likecounter.text(+likecounter.text() + 1);
     }
-  });
-    $("#dislike-js").click(() => {
-    let elem = $("#dislike-js");
-    if(elem.hasClass("voted")) {
-      elem.toggleClass("voted");
+});
+
+dislike.click(() => {
+    if (dislike.hasClass('voted')) {
+        dislike.toggleClass('voted');
+        dislikecounter.text(+dislikecounter.text() - 1);
+    } else {
+        if (like.hasClass('voted')) {
+            like.toggleClass('voted');
+            likecounter.text(+likecounter.text() - 1);
+        }
+        dislike.toggleClass('voted');
+        dislikecounter.text(+dislikecounter.text() + 1);
     }
-  });
+});
+
+subscribe.click(() => {
+    if(subscribe.hasClass('subscribe-btn--grey')) {
+      subscribe.text('Subscribe');
+    } else {
+      subscribe.text('Unsubscribe');
+    }
+    subscribe.toggleClass('subscribe-btn--grey');
+});
 </script>

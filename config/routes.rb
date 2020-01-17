@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  mount Commontator::Engine => '/commontator'
   
   resources :profile do
     member do
@@ -11,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :videos do
+    resources :comments
     member do
       put "like", to: "videos#upvote"
       put "dislike", to: "videos#downvote"
