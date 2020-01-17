@@ -32,7 +32,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'streamio-ffmpeg'
 gem 'activestorage-validator'
-gem 'commontator'
+# gem 'commontator'
 gem 'acts_as_votable'
 gem 'socialization' # https://github.com/cmer/socialization#acts_as_follower-methods
 gem 'gravatar_image_tag'
