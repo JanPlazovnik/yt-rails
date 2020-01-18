@@ -12,6 +12,7 @@
  *
  *= require 'reset'
  *= require 'navigation'
+ *= require 'devise'
  *= require_tree .
  *= require_self
  */
