@@ -43,4 +43,20 @@ module ApplicationHelper
         end
         return classes
     end
+    def count_views(video)
+        views = video.histories.count
+        if views == 1
+            views.to_s + " view"
+        else
+            views.to_s + " views"
+        end
+    end
+    def convert_duration(video)
+        duration = video.video_length
+        if duration >= 3600
+            Time.at(duration).utc.strftime("%H:%M:%S")
+        else
+            Time.at(duration).utc.strftime("%M:%S")
+        end
+    end
 end
