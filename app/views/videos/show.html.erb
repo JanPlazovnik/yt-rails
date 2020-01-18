@@ -1,9 +1,10 @@
+<% content_for :title, @video.title %>
 <div class="video-column">
   <%= video_tag url_for(@video.clip), poster: url_for(@video.thumbnail), :controls => true, class: "video-view" %>
   <div class="video-info">
     <h1 class="title"><%= truncate(@video.title, :length => 60, :separator => ' ') %></h1>
     <div class="video-meta">
-      <span class="video-views">x views &middot; <%= @video.created_at.strftime("%b %d, %Y") %></span>
+      <span class="video-views"><%= count_views(@video) %> &middot; <%= @video.created_at.strftime("%b %d, %Y") %></span>
       <div class="video-meta-items">
         <% if user_signed_in? %>
           <%= link_to like_video_path(@video), method: :put, id: "like-js", class: has_liked(current_user, @video) do %>
@@ -42,11 +43,13 @@
           <% end %>
         <% end %>
       </div>
+      <% if @video.description.length > 0%>
       <p class="video-description-content"><%= @video.description %></p>
+      <p id="expand-description">Show more</p>
+      <% end %>
     </div>
   </div>
-  <div class="video-comments">
-  </div>
+  <div class="video-comments"></div>
 </div>
 
 <div class="suggestions-column">
@@ -55,10 +58,12 @@
       <div class="suggestion-card">
         <div class="suggestion-thumbnail">
           <%= image_tag video_thumbnail(suggestion), class: "suggestion-image" %>
+          <span class="suggestion-duration"><%= convert_duration(suggestion) %></span>
         </div>
         <div class="suggestion-meta">
           <span class="title"><%= truncate(suggestion.title, :length => 25, :separator => ' ') %></span>
           <span class="author"><%= suggestion.user.username %></span>
+          <span class="views"><%= count_views(suggestion) %></span>
         </div>
       </div>
     <% end %>
@@ -74,6 +79,21 @@
     const dislike = $('#dislike-js');
     const dislikecounter = $('#dislike');
     const subscribe = $('.subscribe-btn');
+    const descriptiontoggle = $('#expand-description');
+    const description = $('.video-description-content');
+
+    if(description.height() >= 60) {
+      description.toggleClass('hidden')
+      descriptiontoggle.show();
+    }
+
+    descriptiontoggle.click(() => {
+      if(description.hasClass('hidden'))
+        descriptiontoggle.text("show less");
+      else
+        descriptiontoggle.text("show more");
+      description.toggleClass('hidden');
+    });
 
     like.click(() => {
         if (like.hasClass('voted')) {
