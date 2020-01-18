@@ -9,13 +9,13 @@ development:
   <<: *default
   database: rails-yt
   username: postgres
-  password: root
+  password: admin
 
 test:
   <<: *default
   database: rails-yt
   username: postgres
-  password: root
+  password: admin
 
 production:
   <<: *default
