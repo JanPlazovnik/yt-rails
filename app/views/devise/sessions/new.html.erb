@@ -1,26 +1,26 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
+<% content_for :title, 'Login' %>
+<div class="login-wrapper">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= f.label :email do %>
+      <i class='uil uil-envelope'></i> Email
+    <% end%>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password do %>
+      <i class='uil uil-key-skeleton'></i> password
+    <% end%>
+
     <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <% if devise_mapping.rememberable? %>
+    <div class="row">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
     </div>
-  <% end %>
-
-  <div class="actions">
+    <% end %>
+    
     <%= f.submit "Log in" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+    <%= render "devise/shared/links" %>
+  <% end %>
+</div>
