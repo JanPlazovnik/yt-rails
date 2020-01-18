@@ -1,0 +1,150 @@
+.settings-wrapper {
+    display: flex;
+    flex-direction: row;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 0;
+    width: 100%;
+    .menu {
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        a {
+            color: #d3d3d3;
+            padding: 10px;
+            text-decoration: none;
+        }
+    }
+    
+    .settings {
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+        border-radius: 10px;
+        color: #f9f9f9;
+
+        h1 {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+        label {
+            display: inline-flex;
+            font-size: .8em;
+            text-transform: uppercase;
+            align-items: center;
+            line-height: 1
+        }
+
+        .settings-block {
+            background-color: #242424;
+            border-radius: 10px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .divider {
+            height: 1px;
+            width: 100%;
+            background-color: #242424;
+            margin: 30px 0;
+        }
+        .in-divider {
+            height: 1px;
+            width: 100%;
+            background-color: #1d1d1d;
+            margin: 5px 0;
+        }
+        .settings-media {
+            width: 100%;  
+            h1 {
+                display: inline-flex;
+                font-size: .8em;
+                text-transform: uppercase;
+                align-items: center;
+                line-height: 1;
+                margin: 0;
+            }
+
+            input[type="file"] {
+                width: 0.1px;
+                height: 0.1px;
+                opacity: 0;
+                overflow: hidden;
+                position: absolute;
+                z-index: -1;
+            }
+            input[type="file"] + label {
+                // display: inline-block;
+                background-color: #c10000;
+                border: none;
+                width: 25%;
+                box-sizing: border-box;
+                padding: 10px;
+                outline: none;
+                border-radius: 10px;
+                color: #f9f9f9;
+                font-size: .9em;
+                transition: background-color .125s ease-in-out;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            input[type="file"]:focus + label,
+            input[type="file"] + label:hover {
+                background-color: #a10101;
+            }
+
+            .media-banner {
+                display: flex;
+                flex-direction: column;
+                img {
+                    max-height: 120px;
+                    border: 2px solid #525252;
+                    width: 70%;
+                    object-fit: cover;
+                    object-position: 0 30%;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    margin: 15px 0;
+                }               
+            }
+            .media-avatar {
+                display: flex;
+                flex-direction: column;
+                img {
+                    border: 2px solid #525252;
+                    height: 100px;
+                    width: 100px;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    margin: 15px 0;
+                }         
+            }
+        }
+        .settings-account {
+            display: flex;
+            flex-direction: column;
+            input {
+                width: 70%;
+                box-sizing: border-box;
+                padding: 10px;
+                outline: none;
+                background-color: #2c2c2c;
+                border: 2px solid #525252;
+                border-radius: 10px;
+                margin: 15px 0 15px 0;
+                color: #f9f9f9;
+                font-size: .9em;
+            }
+            input[type="email"] {
+                background-color: #525252;
+            }
+            input[type="submit"] {
+                background-color: #c10000;
+                border: none;
+                width: 25%;
+            }
+        }
+    }
+}

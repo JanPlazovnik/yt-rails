@@ -1,3 +1,177 @@
 // Place all the styles related to the profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.profile-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px 0;
+
+    .profile-banner {
+        height: 230px;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+        background-color: green;
+        position: relative;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: 0 30%;        
+        }
+
+        a {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            right: 10px;
+            bottom: 10px;
+            padding: 10px;
+            background-color: #10101060;
+            color: #fff;
+            font-size: 1.2em;
+            border-radius: 50%;
+            transition: background-color .14s ease-in-out;
+            &:hover {
+                background-color: #101010ab;
+            }
+        }
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 15px 0;
+        .profile-avatar {
+            height: 100px;
+            width: 100px;
+            overflow: hidden;
+            border-radius: 100%;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+            background-color: #101010;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: 50% 50%;
+            }
+        }
+        
+        .profile-user {
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            .username {
+                font-size: 1.5em;
+                font-weight: 600;
+                color: #ffffff;
+            }
+            
+            .sub-count {
+                font-size: 1.1em;
+                color: #828282;
+            }
+        }
+        
+        
+        .profile-subscribe {
+            margin-left: auto;
+            a {
+                font-size: 1.15em;
+                text-decoration: none;
+                color: #ffffff;
+                background-color: #c10000;
+                padding: 10px;        
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+                transition: width .13s ease-in-out, background-color .13s ease-in-out;
+                &:hover {
+                    background-color: #9b0101;
+                }
+            }
+            
+        }
+    }
+
+    .profile-menu {
+        display: flex;
+        flex-direction: row;
+        a {
+            padding: 5px 12px;
+            text-decoration: none;
+            font-size: 1.1em;
+            color: #c3c3c3;
+            &.active {
+                color: #c10000;
+                border-bottom: 3px solid #c10000;
+            }
+        }
+    }
+
+    .profile-uploads {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 5px;
+        margin-left: -10px;
+        .upload {
+            overflow: hidden;
+            width: calc(25% - 10px);
+            margin-left: 10px;
+            margin-top: 15px;
+            a {
+                text-decoration: none;
+            }
+            img {
+                border-radius: 10px;
+                width: 100%;
+                margin-bottom: 7px;
+                box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+            }
+            span {
+                font-size: 1em;
+                color: #c3c3c3;
+            }
+        }
+        
+    }
+    @media only screen and (max-width: 1200px) {
+        .profile-banner {
+            max-height: 230px;
+        }
+        .profile-uploads .upload {
+            width: calc(33% - 10px);
+        }
+    }
+
+    @media only screen and (max-width: 900px) {
+        .profile-banner {
+            max-height: 180px;
+        }
+        .profile-uploads .upload {
+            width: calc(50% - 10px);
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        .profile-banner {
+            max-height: 150px;
+        }
+        
+        .profile-uploads .upload {
+            width: calc(100% - 10px);
+        }
+    }
+}
+                        
+.subscribe-btn--grey {
+    background-color: #747474 !important;
+}
