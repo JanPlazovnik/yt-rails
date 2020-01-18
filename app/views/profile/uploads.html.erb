@@ -1,3 +1,4 @@
+<% content_for :title, @user.username %>
 <div class="profile-wrapper">
     <div class="profile-banner">
         <%= image_tag @user.banner if @user.banner.attached? %>
@@ -39,7 +40,10 @@
         <div class="upload">
             <%= link_to video_path(video) do %>
                 <%= image_tag upload_thumbnail(video, 300, 150) %>
-                <span><%= video.title %></span>
+                <div class="row">
+                    <span><%= video.title %></span>
+                    <span class="duration"><%= convert_duration(video) %></span>
+                </div>
             <% end %>
         </div>
     <% end %>
