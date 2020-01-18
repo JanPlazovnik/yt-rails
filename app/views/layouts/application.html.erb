@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsYt</title>
+    <title><%= (yield(:title) + " - " unless yield(:title).blank?).to_s + "railstube" %></title>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.0.8/css/unicons.css"> <!-- https://iconscout.com/unicons -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -57,5 +57,19 @@
     <div class="container">
       <%= yield %>
     </div>
+    <script>
+      (function(){
+        const notice = $('#notice');
+        const alert = $('#alert');
+
+        notice.click(() => {
+          notice.hide();
+        })
+
+        alert.click(() => {
+          alert.hide();
+        })
+      }());
+    </script>
   </body>
 </html>
