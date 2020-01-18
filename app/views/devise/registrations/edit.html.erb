@@ -1,53 +1,68 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="settings-wrapper">
+    <div class="menu">
+        <a href="#media">Media</a>
+        <a href="#account">Account</a>
+    </div>
+    <div class="settings">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <h1><i class='uil uil-angle-right'></i> Media</h1>
+          <div id="media" class="settings-block settings-media">
+            <div class="media-banner">
+              <h1>channel banner</h1>   
+                <%= image_tag current_user.banner if current_user.banner.attached? %>
+                <%= f.file_field :banner, name: 'user_banner', id: 'user_banner' %>
+                <%= f.label :banner do %>
+                  choose a file
+                <% end %>
+            </div>
+            <div class="media-avatar">
+                <h1 style="margin-top: 15px;"><i class='uil uil-scenery'></i> avatar</h1>           
+                <%= image_tag user_avatar(current_user, 100) %>
+                <%= f.file_field :avatar, name: 'user_avatar', id: 'user_avatar' %>
+                <%= f.label :avatar do %>
+                  Choose a file
+                <% end %>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <h1><i class='uil uil-angle-right'></i> Account</h1>
+          <div id="account" class="settings-block settings-account">
+              <%= f.label :username do %>
+                <i class='uil uil-user-circle'></i> Username
+              <% end %>
+              <%= f.text_field :username, autofocus: true %>
 
-  <div class="field">
-    <%= f.label :avatar %><br />
-    <%= f.file_field :avatar %>
-  </div>
+              <%= f.label :email do %>
+                <i class='uil uil-envelope'></i> Email
+              <% end %>
+              <%= f.email_field :email, autocomplete: "email", :disabled => true %>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true %>
-  </div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+              <%= f.label :password do %>
+                <i class='uil uil-key-skeleton'></i> password
+                <% if @minimum_password_length %>    
+                  (min <%= @minimum_password_length %>)
+                <% end %>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "new-password" %>
+              
+              <%= f.label :password_confirmation do %>
+              <i class='uil uil-key-skeleton'></i> password confirmation
+              <% end %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+              <%= f.label :current_password do %>
+                <i class='uil uil-key-skeleton'></i> current password *
+              <% end %>
+              <%= f.password_field :current_password, autocomplete: "current-password" %>
+              <div class="in-divider"></div>
+              <%= f.submit "Update" %>
+          </div>
+      <% end %>
+    </div>
+</div>
