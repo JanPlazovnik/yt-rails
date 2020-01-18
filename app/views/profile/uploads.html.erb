@@ -1,5 +1,48 @@
-<%= @user.username %>
-
-<% @user.videos.map do |video| %>
-    <%= link_to video.title, video_path(video) %><br/>
-<% end %>
+<div class="profile-wrapper">
+    <div class="profile-banner">
+        <%= image_tag @user.banner if @user.banner.attached? %>
+        <% if user_signed_in? && current_user == @user %>
+            <%= link_to edit_user_registration_path do %>
+                <i class='uil uil-cog'></i>
+            <% end %>
+        <% end %>
+    </div>
+    <div class="row">
+        <div class="profile-avatar">
+            <%= image_tag user_avatar(@user, 100) %>
+            <i class='uil uil-cog'></i>
+        </div>
+        <div class="profile-user">
+            <span class="username"><%= @user.username %></span>
+            <span class="sub-count"><%= user_subscribers(@user) %></span>
+        </div>
+        <% if user_signed_in? && current_user != @user %>
+            <div class="profile-subscribe">
+            <% if !current_user.follows?(@user)%>
+                <%= link_to follow_profile_path(@user.id), class: 'subscribe-btn', method: :put do %>
+                    Subscribe
+                <% end %>
+            <% else %>
+                <%= link_to unfollow_profile_path(@user.id), class: ['subscribe-btn', 'subscribe-btn--grey'], method: :put do %>
+                    Unsubscribe
+                <% end %>
+            <% end %>
+            </div>
+        <% end %>
+    </div>
+    <div class="profile-menu">
+        <%= link_to 'Home', profile_path(@user)%>
+        <%= link_to 'Uploads', uploads_profile_path(@user.id), class: "active" %>
+    </div>
+    <div class="profile-uploads">
+    <% @user.videos.map do |video| %>
+        <div class="upload">
+            <%= link_to video_path(video) do %>
+                <%= image_tag upload_thumbnail(video, 300, 150) %>
+                <span><%= video.title %></span>
+            <% end %>
+        </div>
+    <% end %>
+    </div>
+    <!--<h1 style="font-size: 2em; font-weight: bold">Videos</h1>-->
+</div>
