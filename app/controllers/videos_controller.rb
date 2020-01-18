@@ -15,6 +15,10 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
+    history = History.new
+    history.user = current_user if user_signed_in?
+    history.video = @video
+    history.save
     @suggestions = Video.includes(:user).where.not(id: params[:id]).order("RANDOM()").limit(10)
   end
 
