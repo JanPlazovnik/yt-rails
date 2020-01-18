@@ -9,5 +9,5 @@ class Video < ApplicationRecord
     validates :thumbnail, blob: { content_type: :image }
 
     belongs_to :user
-    has_many :comments, dependent: :destroy
+    has_many :histories
 end
