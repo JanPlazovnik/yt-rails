@@ -1,3 +1,4 @@
+<% content_for :title, @user.username %>
 <div class="profile-wrapper">
     <div class="profile-banner">
         <%= image_tag @user.banner if @user.banner.attached? %>
@@ -33,11 +34,25 @@
         <%= link_to 'Home', profile_path(@user), class: "active" %>
         <%= link_to 'Uploads', uploads_profile_path(@user.id) %>
     </div>
-    <h1 style="font-size: 2em; font-weight: bold">Videos</h1>
 
-    <% @user.videos.map do |video| %>
-        <%= link_to video.title, video_path(video) %><br/>
-    <% end %>
+    <% last = @user.videos.last %>
+    <% if !last.nil? %>
+    <h1 class="section">Latest upload</h1>
+
+    <div class="profile-recent">
+        <div class="thumbnail-wrapper">
+            <%= link_to video_path(last) do %>
+                <%= image_tag upload_thumbnail(last, 450, 250) %>
+            <% end %>
+            <span class="duration"><%= convert_duration(last) %></span>
+        </div>
+        <div class="info">
+            <span class="title"><%= truncate(last.title, :length => 45, :separator => ' ') %></span>
+            <span class="description"><%= truncate(last.description, :length => 300, :separator => ' ') %></span>
+            <span class="details"><%= count_views(last) %> &middot; <%= time_ago_in_words(last.created_at) %> ago</span>
+        </span>
+    </div>
+    <%end%>
 </div>
 <script>
 (function(){
