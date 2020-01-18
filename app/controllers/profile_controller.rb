@@ -4,8 +4,7 @@ class ProfileController < ApplicationController
     before_action :prevent_self_follow, only: [:follow, :unfollow]
 
     def show
-        @test = "sadsa"
-        puts "here"
+        @latest = @user.videos.order('created_at DESC').limit(4)
     end
 
     def follow
