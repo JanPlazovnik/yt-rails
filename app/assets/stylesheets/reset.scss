@@ -52,7 +52,7 @@ table {
 }
 
 .container {
-	max-width: 1600px;
+	max-width: 1400px;
 	width: 100%;
 	margin: 0 auto;
 	padding-top: 10px;
@@ -60,4 +60,22 @@ table {
 
 body {
 	background-color: #171717;
+}
+
+#notice,
+#alert {
+	border: 2px solid #c10000;
+	padding: 20px;
+	position: absolute;
+	border-radius: 10px;
+	background-color: #242424;
+	right: 50%;
+	transform: translateX(50%);
+	bottom: 30px;
+	color: #d2d2d2;
+	z-index: 999;
+	cursor: pointer;
+	&:empty {
+		display: none;
+	}
 }
