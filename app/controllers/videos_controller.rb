@@ -9,14 +9,18 @@ class VideosController < ApplicationController
   def index
     @videos = Video.all
     @channel_top = User.includes(:videos).references(:videos).where('videos.id IS NOT NUll').order("RANDOM()").limit(1).first()
-    @top_picks = Video.includes(:user).order("RANDOM()").limit(10)
+    @top_picks = Video.includes(:user).order("RANDOM()").limit(8)
   end
 
   # GET /videos/1
   # GET /videos/1.json
   def show
     history = History.new
-    history.user = current_user if user_signed_in?
+    if user_signed_in?
+      history.user = current_user 
+    else
+      history.user = User.find_by_id(7)
+    end
     history.video = @video
     history.save
     @suggestions = Video.includes(:user).where.not(id: params[:id]).order("RANDOM()").limit(10)
@@ -42,9 +46,11 @@ class VideosController < ApplicationController
         if @video.clip.attached? && !@video.thumbnail.attached?
           @video.clip.open do |file|
             movie = FFMPEG::Movie.new(file.path)
+            @video.video_length = movie.duration
             thumb_time = (movie.duration / 2).round
             thumb = movie.screenshot("./storage/thumbnails/#{@video.clip.key}_thumb.png", {quality: 3, seek_time: thumb_time, resolution: '600x450'}, preserve_aspect_ratio: :width)
             @video.thumbnail.attach(io: File.open(thumb.path), filename: "#{@video.clip.key}_thumb.png", content_type: "image/png")
+            @video.save
           end
         end
         format.html { redirect_to @video, notice: 'Video was successfully created.' }
@@ -93,7 +99,7 @@ class VideosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_video
-      @video = Video.find(params[:id])
+      @video = Video.includes(:histories).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
