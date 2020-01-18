@@ -1,4 +1,4 @@
-
+<% content_for :title, 'Settings' %>
 <div class="settings-wrapper">
     <div class="menu">
         <a href="#media">Media</a>
@@ -10,9 +10,9 @@
           <h1><i class='uil uil-angle-right'></i> Media</h1>
           <div id="media" class="settings-block settings-media">
             <div class="media-banner">
-              <h1>channel banner</h1>   
+              <h1><i class='uil uil-scenery'></i> channel banner</h1>   
                 <%= image_tag current_user.banner if current_user.banner.attached? %>
-                <%= f.file_field :banner, name: 'user_banner', id: 'user_banner' %>
+                <%= f.file_field :banner %>
                 <%= f.label :banner do %>
                   choose a file
                 <% end %>
@@ -20,7 +20,7 @@
             <div class="media-avatar">
                 <h1 style="margin-top: 15px;"><i class='uil uil-scenery'></i> avatar</h1>           
                 <%= image_tag user_avatar(current_user, 100) %>
-                <%= f.file_field :avatar, name: 'user_avatar', id: 'user_avatar' %>
+                <%= f.file_field :avatar %>
                 <%= f.label :avatar do %>
                   Choose a file
                 <% end %>
