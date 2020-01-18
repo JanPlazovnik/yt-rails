@@ -17,6 +17,11 @@ module ApplicationHelper
             video.thumbnail.variant(resize: "300x150!")
         end
     end
+    def upload_thumbnail(video, x, y)
+        if video.thumbnail.attached?
+            video.thumbnail.variant(resize: "#{x}x#{y}!")
+        end
+    end
     def user_subscribers(user) 
         if user.followers_count == 1
             user.followers_count.to_s + " subscriber"
