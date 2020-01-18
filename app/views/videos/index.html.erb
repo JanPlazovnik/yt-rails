@@ -1,11 +1,18 @@
 
-<div class="inner-container">
-  <h1 class="frontpage-recommendation-title">Recommended for you</h1>
-  <div class="frontpage-recommendations">
-    <% @top_picks.each do |recommendation| %>
-      <%= link_to recommendation, class: "frontpage-recommendation-item" do %>
-        <%= image_tag frontpage_thumbnail(recommendation) %>
-      <% end %>
+<div class="frontpage">
+  <h1 class="title">Recommended for you</h1>
+    <div class="frontpage-recommendations">
+    <% @top_picks.map do |recommendation| %>
+        <div class="upload">
+            <%= link_to video_path(recommendation) do %>
+                <%= image_tag upload_thumbnail(recommendation, 300, 150) %>
+                <div class="row">
+                    <span><%= recommendation.title %></span>
+                    <span class="duration"><%= convert_duration(recommendation) %></span>
+                </div>
+            <% end %>
+        </div>
     <% end %>
+    </div>
   </div>
 </div>
