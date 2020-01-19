@@ -79,3 +79,7 @@ body {
 		display: none;
 	}
 }
+
+[class^="uil-"]::before, [class*=" uil-"]::before {
+	margin-left: 0;
+}
