@@ -299,7 +299,6 @@
         margin-top: 5px;
         margin-left: -10px;
         .upload {
-            overflow: hidden;
             width: calc(25% - 10px);
             margin-left: 10px;
             margin-top: 15px;
@@ -354,5 +353,179 @@
         100% {
             background-position: calc(25% - 5px);
         }
+    }
+}
+
+.upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 30%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0;
+    color: #f9f9f9;
+    transition: max-width .125s ease;
+
+    h1 {
+        font-size: 1.4em;
+        margin-bottom: 20px;
+    }
+    
+    .upload-block {
+        background-color: #242424;
+        border-radius: 10px;
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+
+        h1, label {
+            display: inline-flex;
+            font-size: .8em;
+            text-transform: uppercase;
+            align-items: center;
+            line-height: 1;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 1.1em;
+            color: #f9f9f9;
+            padding: 0;
+            margin: 0;
+        }
+
+        .in-divider {
+            height: 1px;
+            width: 100%;
+            background-color: #1d1d1d;
+            margin: 5px 0;
+        }
+
+        ul {
+            outline: 1px solid yellow;
+            li {
+                outline: 1px solid orange;
+                color: #7d7d7d;
+                padding: 3px;
+                i {
+                    color: #c10000;
+                }
+            }
+        }
+
+        input, textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            outline: none;
+            background-color: #2c2c2c;
+            border: 2px solid #525252;
+            border-radius: 10px;
+            margin: 15px 0 15px 0;
+            color: #f9f9f9;
+            font-size: .9em;
+        }
+
+        input[type="file"] {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+
+        input[type="file"] + label {
+            // display: inline-block;
+            background-color: #c10000;
+            border: none;
+            width: 25%;
+            box-sizing: border-box;
+            padding: 10px;
+            outline: none;
+            border-radius: 10px;
+            color: #f9f9f9;
+            margin-top: 20px;
+            font-size: .9em;
+            transition: background-color .125s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        input[type="file"]:focus + label,
+        input[type="file"] + label:hover {
+            background-color: #a10101;
+        }
+
+        input[type="submit"] {
+            background-color: #c10000;
+            border: none;
+            width: 100%;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .direct-upload {
+            display: inline-block;
+            position: relative;
+            padding: 10px;
+            margin: 0;
+            border: 2px solid #525252;
+            color: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            font-size: 1.1em;
+            line-height: 1.1em;
+        }
+        
+        .direct-upload--pending {
+            opacity: 0.6;
+        }
+        
+        .direct-upload__progress {
+            position: absolute;
+            border-radius: 10px;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            opacity: 0.2;
+            background: #c10000;
+            transition: width 120ms ease-out, opacity 60ms 60ms ease-in;
+            transform: translate3d(0, 0, 0);
+        }
+        
+        .direct-upload--complete .direct-upload__progress {
+            opacity: 0.4;
+        }
+        
+        .direct-upload--error {
+            border-color: red;
+        }
+        
+        input[type=file][data-direct-upload-url][disabled] {
+            display: none;
+        }
+    }
+}
+@media only screen and (max-width: 1400px) {
+    .upload-wrapper {
+        max-width: 33%;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .upload-wrapper {
+        max-width: 50%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .upload-wrapper {
+        max-width: 100%;
     }
 }
