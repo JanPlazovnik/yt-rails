@@ -12,6 +12,7 @@ window.addEventListener('turbolinks:load', () => {
             const { target, detail } = event;
             const { id, file } = detail;
             console.log("Initialized", file);
+            $("#video_upload_abort").removeClass("hidden");
             target.insertAdjacentHTML("beforebegin", `
                 <div id="direct-upload-${id}" class="direct-upload direct-upload--pending">
                     <div id="direct-upload-progress-${id}" class="direct-upload__progress" style="width: 0%"></div>
