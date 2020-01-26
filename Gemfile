@@ -36,6 +36,7 @@ gem 'activestorage-validator'
 gem 'acts_as_votable'
 gem 'socialization' # https://github.com/cmer/socialization#acts_as_follower-methods
 gem 'gravatar_image_tag'
+gem 'omniauth-facebook'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
