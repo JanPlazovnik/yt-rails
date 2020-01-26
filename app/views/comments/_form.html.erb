@@ -1,0 +1,44 @@
+<%= form_with(model: comment, local: true) do |form| %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+        <% comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="comments-body">
+      <%= form.hidden_field :video, :value => @video.id %>
+      <%= form.text_area :body, :placeholder => "Write a comment..." %>
+      <%= form.submit %>
+    </div>
+<% end %>
+
+<style>
+    * {
+      font-family: 'Robot', sans-serif;
+    }
+    .comments-body input,
+    .comments-body textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      outline: none;
+      background-color: #2c2c2c;
+      border: 2px solid #525252;
+      border-radius: 10px;
+      /* margin: 15px 0 15px 0; */
+      color: #f9f9f9;
+      font-size: .9em;
+    }
+    .comments-body input[type="submit"] {
+      margin: 10px 0;
+      background-color: #c10000;
+      border: none;
+      /* width: 25%; */
+    }
+</style>
