@@ -56,10 +56,7 @@
               <% end %>
               <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
 
-              <%= f.label :current_password do %>
-                <i class='uil uil-key-skeleton'></i> current password *
-              <% end %>
-              <%= f.password_field :current_password, autocomplete: "current-password" %>
+
               <div class="in-divider"></div>
               <%= f.submit "Update" %>
           </div>
