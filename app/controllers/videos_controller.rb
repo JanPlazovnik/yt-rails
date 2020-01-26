@@ -18,12 +18,14 @@ class VideosController < ApplicationController
     history = History.new
     if user_signed_in?
       history.user = current_user 
+      @comment = @video.comments.build
     else
       history.user = User.find_by_id(7)
     end
     history.video = @video
     history.save
     @suggestions = Video.includes(:user).where.not(id: params[:id]).order("RANDOM()").limit(10)
+    @comments = @video.comments.all
   end
 
   # GET /videos/new
