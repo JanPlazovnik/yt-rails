@@ -161,6 +161,54 @@
     background-color: #393939;
 }
 
+.video-comments {
+    h1 {
+        font-size: 1.1em;
+        margin-bottom: 15px;
+        color: #f9f9f9;
+    }
+    .comment {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 10px 0;
+        img {
+            height: 32px;
+            width: 32px;
+        }
+        .comment-inner {
+            display: flex;
+            flex-direction: column;
+            margin-left: 15px;
+            width: 100%;
+            div {
+                display: flex;
+                flex-direction: row;
+                align-items: end;
+                a {
+                    margin-left: auto;
+                }
+            }
+            span {
+                color: #fff;
+                &.comment-time {
+                    margin-left: 5px;
+                    color: #7d7d7d;
+                    font-size: .9em;
+                }
+            }
+            p {
+                padding: 5px 0;
+                color: hsla(0, 0%, 100%, 0.878);
+            }
+            a {
+                text-decoration: none;
+                color: #7d7d7d;
+            }
+        }
+    }
+}
+
 .suggestions-column {
     display: flex;
     flex-direction: column;
