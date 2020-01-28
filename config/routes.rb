@@ -1,5 +1,5 @@
+Precompile.ignore
 Rails.application.routes.draw do
-  Precompile.ignore
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations' }
   
   resources :profile do
