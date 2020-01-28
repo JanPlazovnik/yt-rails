@@ -19,8 +19,8 @@ test:
 
 production:
   <<: *default
-  database: d6al185rh5iooi
-  username: tdxrzifdhuphap
-  password: b028516f2175d7e9479f51d9e3b51c43c47f281406865093a2ee7e1ed42a5570
+  database: dd2n6emq2ksrsl
+  username: ebnpphtsadugqz
+  password: cc8e61f1e5ae8fdbde63b95107ed2d05e4b5bf85e12f86937d42d2374f35f29f
   port: 5432
-  url: ec2-54-246-105-238.eu-west-1.compute.amazonaws.com
+  url: ec2-54-246-98-119.eu-west-1.compute.amazonaws.com
