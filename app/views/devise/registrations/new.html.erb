@@ -6,12 +6,12 @@
     <%= f.label :username do %>
       <i class='uil uil-user-circle'></i> Username
     <% end %>
-    <%= f.text_field :username, autofocus: true %>
+    <%= f.text_field :username, autofocus: true, placeholder: 'Enter your username' %>
 
     <%= f.label :email do %>
       <i class='uil uil-envelope'></i> Email
     <% end %>
-    <%= f.email_field :email, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email", placeholder: 'Enter your email' %>
 
     <%= f.label :password do %>
       <i class='uil uil-key-skeleton'></i> password
@@ -19,12 +19,12 @@
         (min <%= @minimum_password_length %>)
       <% end %>
     <% end %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: 'Enter your password' %>
 
     <%= f.label :password_confirmation do %>
       <i class='uil uil-key-skeleton'></i> password confirmation
     <% end %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Re-enter your password' %>
 
     <%= f.submit "Sign up" %>
     <%= render "devise/shared/links" %>

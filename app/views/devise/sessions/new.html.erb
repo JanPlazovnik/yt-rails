@@ -4,24 +4,31 @@
     <%= f.label :email do %>
       <i class='uil uil-envelope'></i> Email
     <% end%>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter your email" %>
 
     <%= f.label :password do %>
       <i class='uil uil-key-skeleton'></i> password
     <% end%>
 
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: "Enter your password" %>
 
-    <% if devise_mapping.rememberable? %>
-    <div class="row">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-    </div>
-    <% end %>
+    <%= f.submit "Sign In" %>
     
-    <%= f.submit "Log in" %>
+    <% if devise_mapping.rememberable? %>
+        <div class="auth-actions">
+          <%= f.check_box :remember_me, :class => 'inp-cbx' %>
+          <%= f.label :remember_me, :class => 'cbx' do %>
+            <span>
+              <svg width="12px" height="10px" viewbox="0 0 12 10">
+                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+              </svg>
+            </span>
+            <span>Remember me?</span>
+          <% end %>
+          <%= link_to "Register", new_registration_path(resource_name) %>
+        </div>
+    <% end %>
 
     <%= render "devise/shared/links" %>
-    <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
   <% end %>
 </div>
