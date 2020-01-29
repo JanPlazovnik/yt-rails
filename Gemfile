@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # User auth
 gem 'devise'
+gem 'aws-sdk-s3'
 gem 'streamio-ffmpeg'
 gem 'activestorage-validator'
 # gem 'commontator'
