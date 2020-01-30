@@ -7,6 +7,11 @@
       <span class="video-views"><%= count_views(@video) %> &middot; <%= @video.created_at.strftime("%b %d, %Y") %></span>
       <div class="video-meta-items">
         <% if user_signed_in? %>
+          <% if @video.user == current_user %>
+          <%= link_to edit_video_url(@video), class: 'video-meta-item' do %>
+            <span>Edit</span>
+          <% end %>
+          <%end%>
           <%= link_to like_video_path(@video), method: :put, id: "like-js", class: has_liked(current_user, @video) do %>
             <i class='uil uil-thumbs-up'></i> <span id="like"><%= @video.get_upvotes.size %></span>
           <% end %>
@@ -62,8 +67,6 @@
             <%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } if user_signed_in? && comment.user == current_user %>
           </div>
           <p><%= comment.body %></p>
-          <% if comment.user == current_user %>
-          <% end %>
         </div>
       </div>
     <% end %>
