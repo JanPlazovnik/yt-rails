@@ -98,3 +98,20 @@
     border-width: 6px;
     margin-left: -6px;
 }
+
+input {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 7px;
+    background-color: #303030;
+    color: #ebebeb;
+    transition: background-color 0.2s cubic-bezier(.4,.01,.54,.99);
+    &[type=text] {
+        max-width: 250px;
+        // width: 100%;
+    }
+    &:focus {
+        background-color: #3b3b3b;
+    }
+}
