@@ -1,36 +1,43 @@
 <% video = @video%>
 <div class="upload-wrapper">
-    <h1><i class='uil uil-angle-right'></i> Upload a video</h1>
     <%= form_with(model: video, local: true, id:"video_form") do |form| %>
-        <div class="upload-block">
-            <% if video.errors.any? %>
-                <ul>
-                    <% video.errors.full_messages.each do |message| %>
-                    <li><i class='uil uil-exclamation-circle'></i> <%= message %></li>
-                    <% end %>
-                </ul>
+        <% if video.errors.any? %>
+            <ul>
+                <% video.errors.full_messages.each do |message| %>
+                <li><i class='uil uil-exclamation-circle'></i> <%= message %></li>
+                <% end %>
+            </ul>
+        <% end %>
+        <div class="header">
+            <h1>Upload a video</h1>
+            <span><i class='uil uil-exclamation-circle'></i> WIP</span>
+        </div>
+        <div class="body">
+            <div class="col w25">
+                <label>title</label> 
+                <label>description</label> 
+                <label>video</label> 
+                <label>thumbnail</label> 
+            </div>
+            <div class="col w75">
+                <%= form.text_field :title, placeholder: 'Enter the video title' %>
 
-            <% end %>
+                <%= form.text_area :description, rows: 10, placeholder: 'Enter the video description' %>
 
-            <%= form.label :title do %>
-                <i class='uil uil-pen'></i> title
-            <% end %>
-            <%= form.text_field :title %>
-
-            <%= form.label :description do %>
-                <i class='uil uil-pen'></i> description
-            <% end %>
-            <%= form.text_area :description, rows: 10 %>
-
-            <a href="#" id="video_upload_abort" class="hidden"><i class='uil uil-times-circle'></i> Cancel upload</a>
-            <h1 style="margin-top: 15px;"><i class='uil uil-video'></i> video</h1> 
-            <%= form.file_field :clip, direct_upload: true %>
-            <%= form.label :clip %>
-            <h1 style="margin-top: 15px;"><i class='uil uil-scenery'></i> thumbnail</h1> 
-            <%= form.file_field :thumbnail %>
-            <%= form.label :thumbnail %>
-            <div class=".in-divider"></div>
-            <%= form.submit id:"submit-btn", value: 'UPLOAD' %>
+                <a href="#" id="video_upload_abort" class="hidden"><i class='uil uil-times-circle'></i> Cancel upload</a>
+                <%= form.file_field :clip, direct_upload: true %>
+                <%= form.label :clip do %>
+                    Upload
+                <% end %>
+                <%= form.file_field :thumbnail %>
+                <%= form.label :thumbnail do %>
+                    Upload
+                <% end %>
+            </div>
+        </div>
+        <div class="footer">
+            <%= link_to 'Cancel', root_path %>
+            <%= form.submit id:"submit-btn", value: 'SUBMIT' %>
         </div>
     <% end %>
 </div>

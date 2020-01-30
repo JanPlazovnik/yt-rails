@@ -1,6 +1,41 @@
-<h1>Editing Video</h1>
+<% video = @video%>
+<div class="upload-wrapper">
+    <%= form_with(model: video, local: true, id:"video_form") do |form| %>
+        <% if video.errors.any? %>
+            <ul>
+                <% video.errors.full_messages.each do |message| %>
+                <li><i class='uil uil-exclamation-circle'></i> <%= message %></li>
+                <% end %>
+            </ul>
+        <% end %>
+        <div class="header">
+            <h1>Edit video</h1>
+            <span><i class='uil uil-exclamation-circle'></i> WIP</span>
+        </div>
+        <div class="body">
+            <div class="col w25">
+                <label>title</label> 
+                <label>description</label> 
+                <label>thumbnail</label> 
+            </div>
+            <div class="col w75">
+                <%= form.text_field :title, placeholder: 'Enter the video title' %>
 
-<%= render 'form', video: @video %>
+                <%= form.text_area :description, rows: 10, placeholder: 'Enter the video description' %>
 
-<%= link_to 'Show', @video %> |
-<%= link_to 'Back', videos_path %>
+                <!--<a href="#" id="video_upload_abort" class="hidden"><i class='uil uil-times-circle'></i> Cancel upload</a>
+                <%= form.file_field :clip, direct_upload: true %>
+                <%= form.label :clip %>-->
+                <%= form.file_field :thumbnail %>
+                <%= form.label :thumbnail do %>
+                    Upload
+                <% end %>
+                <%= image_tag video_thumbnail(video), class: 'suggestion-image' %>
+            </div>
+        </div>
+        <div class="footer">
+            <%= link_to 'Cancel', root_path %>
+            <%= form.submit id:"submit-btn", value: 'SUBMIT' %>
+        </div>
+    <% end %>
+</div>
