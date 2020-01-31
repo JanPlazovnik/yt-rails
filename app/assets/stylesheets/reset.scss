@@ -57,9 +57,13 @@ table {
 	margin: 0 auto;
 	padding-top: 10px;
 }
+* {
+	box-sizing: border-box;
+}
 
 body {
 	background-color: #171717;
+	overflow-x: hidden;
 }
 
 #notice,

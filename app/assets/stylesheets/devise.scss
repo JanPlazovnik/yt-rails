@@ -156,7 +156,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    margin-top: -54px;
     form {
         display: flex;
         flex-direction: column;
@@ -298,5 +298,27 @@
             }
         }
 
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .settings-wrapper .settings {
+        width: 100%;
+        input {
+            width: 100% !important;
+        }
+    }
+}
+@media only screen and (max-width: 440px) {
+    .settings-wrapper {
+        .menu {
+            display: none;
+        }
+        .settings {
+            width: 100%;
+            input {
+                width: 100% !important;
+            }
+        }
     }
 }

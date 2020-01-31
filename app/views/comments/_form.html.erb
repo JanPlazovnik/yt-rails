@@ -14,7 +14,7 @@
     <div class="comments-body">
       <%= form.hidden_field :video, :value => @video.id %>
       <%= form.text_area :body, :placeholder => "Write a comment..." %>
-      <%= form.submit %>
+      <%= form.submit "Submit"%>
     </div>
 <% end %>
 
@@ -46,6 +46,12 @@
       margin: 10px 0;
       background-color: #c10000;
       border: none;
-      width: 25%;
+      width: 17%;
+      font-weight: 600;
+    }
+    @media only screen and (max-width: 440px) {
+      .comments-body input[type=submit] {
+        width: 100%;
+      }
     }
 </style>

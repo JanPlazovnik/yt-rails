@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .container {
-    display: flex;
+    // display: flex;
     padding: 0 10px;
 }
 .video-column {
@@ -543,6 +543,14 @@
                 outline-color: green;
                 padding-left: 10px;
                 width: 75%;
+                label {
+                    &.lbl-hidden {
+                        display: none;
+                    }
+                    text-transform: capitalize;
+                    color: #ebebeb;
+                    margin-bottom: 10px;
+                }
             }
         }
     }
@@ -569,14 +577,16 @@
     .direct-upload {
         display: inline-block;
         position: relative;
-        padding: 10px;
-        margin: 0;
-        border: 2px solid #525252;
-        color: #f9f9f9;
-        border-radius: 10px;
+        margin: 10px 0;
         overflow: hidden;
-        font-size: 1.1em;
-        line-height: 1.1em;
+        padding: 10px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        background-color: #303030;
+        color: #ebebeb;
+        font-size: .85em;
+        transition: background-color 0.2s cubic-bezier(.4,.01,.54,.99);        
     }
     
     .direct-upload--pending {
@@ -585,7 +595,7 @@
     
     .direct-upload__progress {
         position: absolute;
-        border-radius: 10px;
+        border-radius: 5px;
         top: 0;
         left: 0;
         bottom: 0;
@@ -596,7 +606,7 @@
     }
     
     .direct-upload--complete .direct-upload__progress {
-        opacity: 0.4;
+        opacity: 0.7;
     }
     
     .direct-upload--error {
@@ -609,16 +619,34 @@
 }
 @media only screen and (max-width: 1400px) {
     .upload-wrapper {
-        max-width: 33%;
+        // max-width: 33%;
     }
 }
 @media only screen and (max-width: 1200px) {
     .upload-wrapper {
-        max-width: 50%;
+        max-width: 60%;
     }
 }
 @media only screen and (max-width: 600px) {
     .upload-wrapper {
         max-width: 100%;
+    }
+}
+@media only screen and (max-width: 440px) {
+    .upload-wrapper {
+        margin-top: 15px;
+        form {
+            .body {
+                .w25 {
+                    display: none;
+                }
+                .w75 {
+                    width: 100% !important;
+                    label.lbl-hidden {
+                        display: unset !important;
+                    }
+                }
+            }
+        }
     }
 }

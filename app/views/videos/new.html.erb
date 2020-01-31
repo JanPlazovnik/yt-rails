@@ -20,15 +20,20 @@
                 <label>thumbnail</label> 
             </div>
             <div class="col w75">
+                <label class="lbl-hidden">title</label> 
                 <%= form.text_field :title, placeholder: 'Enter the video title' %>
 
+                <label class="lbl-hidden">description</label> 
                 <%= form.text_area :description, rows: 10, placeholder: 'Enter the video description' %>
 
+                <label class="lbl-hidden">video</label> 
                 <a href="#" id="video_upload_abort" class="hidden"><i class='uil uil-times-circle'></i> Cancel upload</a>
                 <%= form.file_field :clip, direct_upload: true %>
                 <%= form.label :clip do %>
                     Upload
                 <% end %>
+
+                <label class="lbl-hidden">thumbnail</label> 
                 <%= form.file_field :thumbnail %>
                 <%= form.label :thumbnail do %>
                     Upload
