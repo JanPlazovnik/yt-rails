@@ -400,6 +400,12 @@
             width: calc(100% - 10px);
         }
     }
+
+    @media only screen and (max-width: 480px) {
+        .frontpage-recommendations .upload {
+            width: calc(100% - 10px);
+        }
+    }
     
     @keyframes shine-lines-recommendation {
         100% {
@@ -618,6 +624,11 @@
     }
 }
 @media only screen and (max-width: 600px) {
+    .upload-wrapper {
+        max-width: 100%;
+    }
+}
+@media only screen and (max-width: 480px) {
     .upload-wrapper {
         max-width: 100%;
     }
