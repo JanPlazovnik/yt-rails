@@ -5,6 +5,35 @@
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
     height:54px;
     align-items: center;
+
+    form {
+        flex: 1;
+        input,
+        button {
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            padding: 7px;
+            background-color: #303030;
+            color: #ebebeb;
+            transition: background-color 0.2s cubic-bezier(.4,.01,.54,.99), max-width 0.2s cubic-bezier(.4,.01,.54,.99);
+            &[type=text] {
+                max-width: 250px;
+                width: 100%;
+                &:focus {
+                    max-width: 300px;
+                }
+            }
+            &:focus {
+                background-color: #3b3b3b;
+            }
+        }
+        button {
+            // border-radius: 50px;
+            width: 30px;
+            height: 30px;
+        }
+    }
 }
 
 .nav .nav-main,
@@ -98,33 +127,4 @@
 	border-bottom-color: #323232;
     border-width: 6px;
     margin-left: -6px;
-}
-
-form {
-    flex: 1;
-    input,
-    button {
-        outline: none;
-        border: none;
-        border-radius: 5px;
-        padding: 7px;
-        background-color: #303030;
-        color: #ebebeb;
-        transition: background-color 0.2s cubic-bezier(.4,.01,.54,.99), max-width 0.2s cubic-bezier(.4,.01,.54,.99);
-        &[type=text] {
-            max-width: 250px;
-            width: 100%;
-            &:focus {
-                max-width: 300px;
-            }
-        }
-        &:focus {
-            background-color: #3b3b3b;
-        }
-    }
-    button {
-        // border-radius: 50px;
-        width: 30px;
-        height: 30px;
-    }
 }
