@@ -288,30 +288,6 @@
             }
         }
     }
-    @media only screen and (max-width: 480px) {
-        .profile-banner {
-            max-height: 150px;
-        }
-        
-        .profile-uploads .upload {
-            width: calc(100% - 10px);
-        }
-        .profile-recent {
-            flex-direction: column;
-            max-width: 100%;
-            .thumbnail-wrapper {
-                max-width: 600px;
-                max-height: 315px;
-            }
-            .info {
-                width: 100%;
-                padding: 20px 0;
-                .description {
-                    max-width: 100%;
-                }
-            }
-        }
-    }
 }
                         
 .subscribe-btn--grey {
