@@ -3,6 +3,7 @@
   <head>
     <title><%= (yield(:title) + " - " unless yield(:title).blank?).to_s + "railstube" %></title>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.0.8/css/unicons.css"> <!-- https://iconscout.com/unicons -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
