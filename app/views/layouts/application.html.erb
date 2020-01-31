@@ -16,11 +16,13 @@
         <%= link_to root_path do %>
           <h1 style="font-size: 1.1em; font-weight: bold"><span style="color:#c10000">rails</span>tube</h1>
         <% end %>
-        <%= form_tag search_index_url, :method => 'get' do %>
-          <%= text_field_tag :q, params[:q], placeholder: 'Search...' %>
-          <%= submit_tag "Search" %>
-        <% end %>
       </div>
+      <%= form_tag search_index_url, :method => 'get' do %>
+        <%= text_field_tag :q, params[:q], placeholder: 'Search...' %>
+        <%= button_tag :submit do %>
+        <i class='uil uil-search'></i>
+        <% end %>
+      <% end %>
       <div class="nav-right">
       <% if user_signed_in? %>
         <%= link_to new_video_path do %>

@@ -25,7 +25,7 @@ class VideosController < ApplicationController
     history.video = @video
     history.save
     @suggestions = Video.includes(:user).where.not(id: params[:id]).order("RANDOM()").limit(10)
-    @comments = @video.comments.all
+    @comments = @video.comments.all.order(created_at: :desc)
   end
 
   # GET /videos/new
