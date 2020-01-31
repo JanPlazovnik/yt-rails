@@ -1,4 +1,5 @@
 <% content_for :title, @video.title %>
+<div class="video-view-wrapper">
 <div class="video-column">
   <%= video_tag url_for(@video.clip), poster: url_for(@video.thumbnail), :controls => true, class: "video-view" %>
   <div class="video-info">
@@ -89,6 +90,7 @@
       </div>
     <% end %>
   <% end %>
+  </div>
 </div>
 
 <script>
