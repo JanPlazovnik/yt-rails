@@ -1,3 +1,78 @@
 // Place all the styles related to the search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.search-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
+    width: 100%;
+    h1 {
+        border-bottom: 2px solid #c10000;
+        color: #c3c3c3;
+        font-size: 1.2em;
+        display: inline-block;
+        padding: 10px 0;
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+    .search-item {
+        transition: background-color 0.2s cubic-bezier(.4,.01,.54,.99);
+        padding: 10px;
+        margin: 2px 0;
+        border-radius: 5px;
+        cursor: pointer;
+        a {
+            display: flex;
+            flex-direction: row;
+            text-decoration: none;
+        }
+        &:hover {
+            background-color: #202020;
+        }
+        .thumbnail {
+            position: relative;
+            max-width: 246px;
+            max-height: 138px;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+            .duration {
+                position: absolute;
+                border-radius: 10px;
+                padding: 5px;
+                background-color: hsla(0, 0%, 6%, 0.376);
+                bottom: 5px;
+                right: 5px;
+                color: #ffffff;
+                font-size: .8em;
+            }
+        }
+        .content {
+            margin-left: 15px;
+            display: flex;
+            flex-direction: column;
+            .title {
+                font-size: 1.125em;
+                color: #fff;
+                white-space: normal;
+                font-weight: 400;
+                line-height: 1.1em;
+            }
+            .info, .description {
+                color: #aaa;
+                font-size: .9em;
+                max-width: 600px;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                hyphens: auto;
+                white-space: normal;
+                text-overflow: ellipsis;
+            }
+            .description {
+                margin-top: 10px;
+            }
+        }
+    }
+}
