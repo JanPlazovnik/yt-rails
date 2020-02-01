@@ -1,6 +1,6 @@
 <div class="search-wrapper">
     <div class="search-header">
-        <h1>Search results <%= "for: " + params[:q] if params[:q] %></h1>
+        <h1>Search results <%= "for: " + params[:q] if params[:q].present? %></h1>
     </div>
     <% @videos.each do |video| %>
         <div class="search-item">
