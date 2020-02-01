@@ -1,3 +1,30 @@
-<% @videos.each do |video| %>
-    <%= video.title %><br/>
-<% end %>
+<div class="search-wrapper">
+    <div class="search-header">
+        <h1>Search results <%= "for: " + params[:q] if params[:q] %></h1>
+    </div>
+    <% @videos.each do |video| %>
+        <div class="search-item">
+            <%= link_to video do %>
+                <div class="thumbnail">
+                    <%= image_tag upload_thumbnail(video, 250, 140) %>
+                    <span class="duration">
+                        <%= convert_duration(video) %>
+                    </span>
+                </div>
+                <div class="content">
+                    <p class="title">
+                        <%= video.title %>
+                    </p>
+                    <p class="info">
+                        <%= video.user.username %> &middot;
+                        <%= count_views(video) %> &middot;
+                        <%= time_ago_in_words(video.created_at) %> ago
+                    </p>
+                    <p class="description">
+                        <%= truncate(video.description, :length => 150, :separator => ' ') %>
+                    </p>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+</div>
