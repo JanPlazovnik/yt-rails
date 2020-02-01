@@ -579,6 +579,14 @@
         display: none;
     }
 
+    #video_upload_abort {
+        margin: 5px 0;
+        color: #bbbbbb;
+        font-size: 1em;
+        padding: 5px 0;
+        border-bottom: 1px solid #c10000;
+    }
+
     .direct-upload {
         display: inline-block;
         position: relative;
