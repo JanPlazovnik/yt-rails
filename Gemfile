@@ -41,6 +41,10 @@ gem 'socialization' # https://github.com/cmer/socialization#acts_as_follower-met
 gem 'gravatar_image_tag'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'activeadmin'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
