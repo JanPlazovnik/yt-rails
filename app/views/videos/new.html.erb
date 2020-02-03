@@ -27,11 +27,11 @@
                 <%= form.text_area :description, rows: 10, placeholder: 'Enter the video description' %>
 
                 <label class="lbl-hidden">video</label> 
-                <a href="#" id="video_upload_abort" class="hidden"><i class='uil uil-times-circle'></i> Cancel upload</a>
                 <%= form.file_field :clip, direct_upload: true %>
                 <%= form.label :clip do %>
                     Upload
                 <% end %>
+                <a href="#" id="video_upload_abort" class="hidden" style="float: right"><i class='uil uil-times-circle'></i> Cancel upload</a>
 
                 <label class="lbl-hidden">thumbnail</label> 
                 <%= form.file_field :thumbnail %>

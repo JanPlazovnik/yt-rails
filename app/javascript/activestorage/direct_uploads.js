@@ -31,7 +31,7 @@ window.addEventListener('turbolinks:load', () => {
 
         document.getElementById("video_clip").addEventListener("direct-upload:progress", (event) => {
             const { id, progress } = event.detail;
-            console.log(`Progress: ${progress}`);
+            // console.log(`Progress: ${progress}`);
             const progressElement = document.getElementById(`direct-upload-progress-${id}`);
             progressElement.style.width = `${progress}%`;
         });
